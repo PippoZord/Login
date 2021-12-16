@@ -30,8 +30,8 @@ public class HomeViewController extends Controller {
     }
 
     @FXML
-    void handleScrutatore(ActionEvent event) {
-
+    void handleScrutatore(ActionEvent event) throws IOException {
+        App.navigate("LoginScrutinatore");
     }
 
     @FXML

@@ -17,7 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class LoginElettoreController extends Controller{
+public class LoginScrutinatoreController {
 
     @FXML
     private ResourceBundle resources;
@@ -29,13 +29,13 @@ public class LoginElettoreController extends Controller{
     private Button backButton;
 
     @FXML
-    private TextField codFisc;
-
-    @FXML
     private Button loginButton;
 
     @FXML
     private PasswordField password;
+
+    @FXML
+    private TextField username;
 
     @FXML
     void handleBackButton(ActionEvent event) throws IOException {
@@ -45,16 +45,16 @@ public class LoginElettoreController extends Controller{
     @FXML
     void handleLoginButton(ActionEvent event) throws SQLException {
         UserDao u = new UserDaoImpl();
-        User f = u.getElettore(new CodFisc(codFisc.getText()));
+        User f = u.getScrutinatore(new CodFisc(username.getText()));
         System.out.println(f);
     }
 
     @FXML
     void initialize() {
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'LoginElettore.fxml'.";
-        assert codFisc != null : "fx:id=\"codFisc\" was not injected: check your FXML file 'LoginElettore.fxml'.";
-        assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'LoginElettore.fxml'.";
-        assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'LoginElettore.fxml'.";
+        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'LoginScrutinatore.fxml'.";
+        assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'LoginScrutinatore.fxml'.";
+        assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'LoginScrutinatore.fxml'.";
+        assert username != null : "fx:id=\"username\" was not injected: check your FXML file 'LoginScrutinatore.fxml'.";
 
     }
 

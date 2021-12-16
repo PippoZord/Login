@@ -2,11 +2,7 @@ package com.login;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
-import com.login.User.CodFisc;
-import com.login.User.Elettore;
 import com.login.User.User;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

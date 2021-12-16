@@ -3,6 +3,7 @@ import java.sql.*;
 
 import com.login.User.CodFisc;
 import com.login.User.Elettore;
+import com.login.User.Scrutinatore;
 import com.login.User.User;
 
 public class UserDaoImpl implements UserDao{
@@ -17,12 +18,20 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public User getUser(CodFisc codFisc) throws SQLException {
+    public User getElettore(CodFisc codFisc) throws SQLException {
         Statement myStatement = myConnection.createStatement();
         ResultSet myResultSet = myStatement.executeQuery("Select * from Elettore where codFiscale= '" + codFisc.getCodFisc() + "';");
         myResultSet.next();
         return new Elettore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getString("password"), myResultSet.getBoolean("voted"));
         
+    }
+
+    @Override
+    public User getScrutinatore(CodFisc codFisc) throws SQLException {
+        Statement myStatement = myConnection.createStatement();
+        ResultSet myResultSet = myStatement.executeQuery("Select * from Scrutinatore where codFisc= '" + codFisc.getCodFisc() + "';");
+        myResultSet.next();
+        return new Scrutinatore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFisc")), myResultSet.getString("password"));
     }
 
     @Override
@@ -34,5 +43,7 @@ public class UserDaoImpl implements UserDao{
     public void deleteUser(User user) {
     
     }
+
+
     
 }
