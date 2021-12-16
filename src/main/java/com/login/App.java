@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 public class App extends Application{
     private static Scene scene;
-    private User u;
     
     public static void main( String[] args ) throws SQLException{
         launch(args);

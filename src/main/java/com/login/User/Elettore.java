@@ -1,11 +1,13 @@
 package com.login.User;
 
+import java.sql.Date;
+
 public class Elettore extends User {
 
     private boolean hasVoted;
     
-    public Elettore(String nome, String cognome, CodFisc codFisc, String password, boolean hasVoted) {
-        super(nome, cognome, codFisc, password);
+    public Elettore(String nome, String cognome, CodFisc codFisc, Date data, char sex, String password, boolean hasVoted) {
+        super(nome, cognome, codFisc, data, sex, password);
         this.hasVoted = hasVoted;
     }
     
@@ -22,7 +24,7 @@ public class Elettore extends User {
     @Override
     public String toString(){
         if (hasVoted == false)
-            return "NOME: " + this.getName() +"\nCOGNOME: " +this.getSurname() +"\nUSERNAME: "+this.getCodFisc() + "\nVOTATO: " + "NO";            
-        return "NOME: " + this.getName() +"\nCOGNOME: " +this.getName() +"\nUSERNAME: "+this.getCodFisc() + "\nVOTATO: " + "SI";
+            return "\nELETTORE\nNOME: " + this.getName() +"\nCOGNOME: " +this.getSurname() +"\nUSERNAME: "+this.getCodFisc() +"\nDATA DI NASCITA: " + this.getData() + "\nSEX: " + this.getSex() + "\nVOTATO: " + "NO";            
+        return "\nELETTORE\nNOME: " + this.getName() + "\nCOGNOME: " + this.getSurname() + "\nUSERNAME: " + this.getCodFisc()+ "\nDATA DI NASCITA: " + this.getData() + "\nSEX: " + this.getSex() + "\nVOTATO: " + "SI";
     }
 }

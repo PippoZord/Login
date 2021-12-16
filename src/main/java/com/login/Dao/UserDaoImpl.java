@@ -22,16 +22,16 @@ public class UserDaoImpl implements UserDao{
         Statement myStatement = myConnection.createStatement();
         ResultSet myResultSet = myStatement.executeQuery("Select * from Elettore where codFiscale= '" + codFisc.getCodFisc() + "';");
         myResultSet.next();
-        return new Elettore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getString("password"), myResultSet.getBoolean("voted"));
+        return new Elettore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getDate("data"),myResultSet.getString("sex").charAt(0), myResultSet.getString("password"), myResultSet.getBoolean("votato"));
         
     }
 
     @Override
     public User getScrutinatore(CodFisc codFisc) throws SQLException {
         Statement myStatement = myConnection.createStatement();
-        ResultSet myResultSet = myStatement.executeQuery("Select * from Scrutinatore where codFisc= '" + codFisc.getCodFisc() + "';");
+        ResultSet myResultSet = myStatement.executeQuery("Select * from Scrutinatore where codFiscale= '" + codFisc.getCodFisc() + "';");
         myResultSet.next();
-        return new Scrutinatore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFisc")), myResultSet.getString("password"));
+        return new Scrutinatore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getDate("data"), myResultSet.getString("sex").charAt(0), myResultSet.getString("password"));
     }
 
     @Override
