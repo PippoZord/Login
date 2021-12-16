@@ -22,6 +22,7 @@ public class UserDaoImpl implements UserDao{
         ResultSet myResultSet = myStatement.executeQuery("Select * from Elettore where codFiscale= '" + codFisc.getCodFisc() + "';");
         myResultSet.next();
         return new Elettore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getString("password"), myResultSet.getBoolean("voted"));
+        //CIao
     }
 
     @Override
