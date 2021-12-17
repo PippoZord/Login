@@ -6,6 +6,8 @@ import com.login.User.Elettore;
 import com.login.User.Scrutinatore;
 import com.login.User.User;
 
+import org.checkerframework.checker.units.qual.s;
+
 public class UserDaoImpl implements UserDao{
 
     private Connection myConnection;
@@ -18,20 +20,46 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public User getElettore(CodFisc codFisc) throws SQLException {
-        Statement myStatement = myConnection.createStatement();
-        ResultSet myResultSet = myStatement.executeQuery("Select * from Elettore where codFiscale= '" + codFisc.getCodFisc() + "';");
-        myResultSet.next();
-        return new Elettore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getDate("data"),myResultSet.getString("sex").charAt(0), myResultSet.getString("password"), myResultSet.getBoolean("votato"));
-        
+    public Elettore getElettore(CodFisc codFisc) throws SQLException {      
+        try  { 
+            PreparedStatement prepStat = myConnection.prepareStatement("select * from Elettore where codFiscale = ?");
+            prepStat.setString(1, sqlEscapeInjection(codFisc.getCodFisc()));
+            ResultSet myResultSet =  prepStat.executeQuery();
+            myResultSet.next();
+            return new Elettore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getDate("data"),myResultSet.getString("sex").charAt(0), myResultSet.getString("password"), myResultSet.getBoolean("votato"));
+        } catch (Exception e) {
+            throw new IllegalArgumentException("codFIscale does not exist");
+        }
     }
 
     @Override
-    public User getScrutinatore(CodFisc codFisc) throws SQLException {
-        Statement myStatement = myConnection.createStatement();
-        ResultSet myResultSet = myStatement.executeQuery("Select * from Scrutinatore where codFiscale= '" + codFisc.getCodFisc() + "';");
-        myResultSet.next();
-        return new Scrutinatore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getDate("data"), myResultSet.getString("sex").charAt(0), myResultSet.getString("password"));
+    public Scrutinatore getScrutinatore(CodFisc codFisc) throws SQLException {
+        try {
+            PreparedStatement prepStat = myConnection.prepareStatement("select * from Elettore where codFiscale = ?");
+            prepStat.setString(1, sqlEscapeInjection(codFisc.getCodFisc()));
+            ResultSet myResultSet =  prepStat.executeQuery();
+            myResultSet.next();
+            return new Scrutinatore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getDate("data"), myResultSet.getString("sex").charAt(0), myResultSet.getString("password"));
+        } catch (Exception e){
+            throw new IllegalArgumentException("codFiscale does not exist");
+        }
+    }
+
+    private String sqlEscapeInjection(String str) {
+        String data = null;
+        if (str != null && str.length() > 0) {
+            str = str.replace("\\", "\\\\");
+            str = str.replace("'", "\\'");
+            str = str.replace("\0", "\\0");
+            str = str.replace("\n", "\\n");
+            str = str.replace("\r", "\\r");
+            str = str.replace("\"", "\\\"");
+            str = str.replace("\\x1a", "\\Z");
+            str = str.replace(";", "\\Z");
+            data = str;
+        }
+        System.out.println(data);
+        return data;
     }
 
     @Override
