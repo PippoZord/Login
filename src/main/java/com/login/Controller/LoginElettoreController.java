@@ -11,7 +11,6 @@ import com.login.Dao.UserDao;
 import com.login.Dao.UserDaoImpl;
 import com.login.User.CodFisc;
 import com.login.User.Elettore;
-import com.login.User.User;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+
 
 public class LoginElettoreController {
 
@@ -55,10 +54,11 @@ public class LoginElettoreController {
         try {
             UserDao u = new UserDaoImpl();
             Elettore e = u.getElettore(new CodFisc(codFisc.getText()));
+            System.out.println(e);
             if (!e.getPassword().equals(HashPassword))
                 throw new IllegalArgumentException();
             else
-                labelError.setText("");
+                labelError.setText("BENVENUTO");
         } catch (Exception e) {
             labelError.setText("ERRORE");
         }

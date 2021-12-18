@@ -3,6 +3,7 @@ package com.login.User;
 import java.util.Objects;
 
 public class CodFisc {
+    
     private final String codFisc;
 
     public CodFisc(String codFisc){
