@@ -1,15 +1,16 @@
 package com.login.User;
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 public abstract class User {
     
     private String nome, cognome, password, nascita, nazione;
     private final CodFisc codiceFiscale;
-    private final Date data;
+    private final LocalDate data;
     private char sex;
 
-    public User(String nome, String cognome, CodFisc codFisc, Date data, char sex, String nascita, String nazione, String password){
+    public User(String nome, String cognome, CodFisc codFisc, LocalDate data, char sex, String nascita, String nazione, String password){
         this.nome = nome;
         this.data = data;
         this.sex = sex;
@@ -37,7 +38,7 @@ public abstract class User {
         return this.password;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return this.data;
     }
 

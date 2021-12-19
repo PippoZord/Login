@@ -2,6 +2,9 @@ package com.login;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Calendar;
+
+import com.login.User.CodFisc;
 import com.login.User.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +16,7 @@ public class App extends Application{
     private static Scene scene;
     
     public static void main( String[] args ) throws SQLException{
+        //CodFisc c = CodFisc.createCodFisc("Lorenzo", "Filipponi", "ITA", "MI", new Calendar.Builder().build(), "M");
         launch(args);
 //        User u = new Elettore("Lorenzo", "Filipponi", new CodFisc("FLPLNZ00M11F205W"), "123456", false);
 
@@ -20,13 +24,11 @@ public class App extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        scene = new Scene(loadView("HomeView", null), 600, 400);
+        scene = new Scene(loadView("HomeView", null), 1036, 682);
         navigate("HomeView");
         stage.setScene(scene);
         stage.setTitle("VOTO ELETTRONICO");
-        stage.setMinWidth(600);
-        stage.setMinHeight(400);
-        stage.setResizable(true);
+        stage.setResizable(false);
         stage.show();      
     }
     

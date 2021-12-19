@@ -10,13 +10,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class HomeViewController extends Controller {
+public class HomeViewController {
 
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
+
+    @FXML
+    private Button Registrati;
 
     @FXML
     private Button elettoreButton;
@@ -30,12 +33,18 @@ public class HomeViewController extends Controller {
     }
 
     @FXML
+    void handleRegistrati(ActionEvent event) throws IOException {
+        App.navigate("RegistraElettore");
+    }
+
+    @FXML
     void handleScrutatore(ActionEvent event) throws IOException {
         App.navigate("LoginScrutinatore");
     }
 
     @FXML
     void initialize() {
+        assert Registrati != null : "fx:id=\"Registrati\" was not injected: check your FXML file 'HomeView.fxml'.";
         assert elettoreButton != null
                 : "fx:id=\"elettoreButton\" was not injected: check your FXML file 'HomeView.fxml'.";
         assert scrutatoreButton != null

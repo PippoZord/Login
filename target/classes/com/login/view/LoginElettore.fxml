@@ -10,18 +10,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.login.Controller.LoginElettoreController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.login.Controller.LoginElettoreController">
    <top>
       <Label alignment="CENTER" prefHeight="98.0" prefWidth="363.0" text=" LOGIN ELETTORE" BorderPane.alignment="CENTER">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
+         <BorderPane.margin>
+            <Insets top="100.0" />
+         </BorderPane.margin>
       </Label>
    </top>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="606.0" prefWidth="990.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="69.0" prefWidth="600.0">
+            <HBox alignment="CENTER" prefHeight="69.0" prefWidth="600.0">
                <children>
                   <Label alignment="CENTER" prefHeight="109.0" prefWidth="282.0" text="CODICE FISCALE">
                      <font>
@@ -30,7 +33,7 @@
                   </Label>
                   <TextField fx:id="codFisc" prefHeight="26.0" prefWidth="171.0">
                      <HBox.margin>
-                        <Insets top="22.0" />
+                        <Insets />
                      </HBox.margin>
                   </TextField>
                </children>
@@ -38,7 +41,7 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="73.0" prefWidth="600.0">
+            <HBox alignment="CENTER" prefHeight="73.0" prefWidth="600.0">
                <children>
                   <Label alignment="CENTER" prefHeight="114.0" prefWidth="280.0" text="PASSWORD">
                      <font>
@@ -47,16 +50,16 @@
                   </Label>
                   <PasswordField fx:id="password">
                      <HBox.margin>
-                        <Insets top="22.0" />
+                        <Insets />
                      </HBox.margin>
                   </PasswordField>
                </children>
             </HBox>
-            <HBox prefHeight="99.0" prefWidth="600.0">
+            <HBox alignment="CENTER" prefHeight="99.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="40.0" prefWidth="106.0" text="LOGIN">
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="40.0" prefWidth="104.0" text="INDIETRO">
                      <HBox.margin>
-                        <Insets left="60.0" top="22.0" />
+                        <Insets left="50.0" top="22.0" />
                      </HBox.margin>
                   </Button>
                   <Label fx:id="labelError" alignment="CENTER" prefHeight="83.0" prefWidth="128.0" text="">
@@ -67,9 +70,9 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="40.0" prefWidth="104.0" text="INDIETRO">
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="40.0" prefWidth="106.0" text="LOGIN">
                      <HBox.margin>
-                        <Insets left="50.0" top="22.0" />
+                        <Insets left="40.0" top="22.0" />
                      </HBox.margin>
                   </Button>
                </children>

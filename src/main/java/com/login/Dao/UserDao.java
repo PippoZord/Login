@@ -1,4 +1,5 @@
 package com.login.Dao;
+import java.io.StringReader;
 import java.sql.SQLException;
 
 import com.login.User.CodFisc;
@@ -11,4 +12,5 @@ public interface UserDao {
     public Scrutinatore getScrutinatore(CodFisc codFisc) throws SQLException;
     public void updateUser(User student);
     public void deleteUser(User student);
+    public void insertElettore(Elettore e) throws SQLException;
 }

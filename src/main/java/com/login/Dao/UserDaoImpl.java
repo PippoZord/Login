@@ -1,13 +1,12 @@
 package com.login.Dao;
 import java.sql.*;
+import java.time.temporal.TemporalField;
 
 import com.login.User.CodFisc;
 import com.login.User.Elettore;
 import com.login.User.Email;
 import com.login.User.Scrutinatore;
 import com.login.User.User;
-
-import org.checkerframework.checker.units.qual.s;
 
 public class UserDaoImpl implements UserDao{
 
@@ -27,7 +26,7 @@ public class UserDaoImpl implements UserDao{
             prepStat.setString(1, sqlEscapeInjection(codFisc.getCodFisc()));
             ResultSet myResultSet =  prepStat.executeQuery();
             myResultSet.next();
-            return new Elettore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getDate("data"),myResultSet.getString("sex").charAt(0), myResultSet.getString("password"), myResultSet.getString("luogoDiNascita"),myResultSet.getString("nazione"), new Email(myResultSet.getString("email")), myResultSet.getString("telefono"), myResultSet.getBoolean("votato"));
+            return new Elettore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getDate("data").toLocalDate(),myResultSet.getString("sex").charAt(0), myResultSet.getString("password"), myResultSet.getString("luogoDiNascita"),myResultSet.getString("nazione"), new Email(myResultSet.getString("email")), myResultSet.getString("telefono"), myResultSet.getBoolean("votato"));
         } catch (Exception e) {
             throw new IllegalArgumentException("codFIscale does not exist");
         }
@@ -40,7 +39,7 @@ public class UserDaoImpl implements UserDao{
             prepStat.setString(1, sqlEscapeInjection(codFisc.getCodFisc()));
             ResultSet myResultSet =  prepStat.executeQuery();
             myResultSet.next();
-            return new Scrutinatore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getDate("data"), myResultSet.getString("sex").charAt(0), myResultSet.getString("nascita"), myResultSet.getString("nazione"), myResultSet.getString("password"));
+            return new Scrutinatore(myResultSet.getString("nome"), myResultSet.getString("cognome"), new CodFisc(myResultSet.getString("codFiscale")), myResultSet.getDate("data").toLocalDate(), myResultSet.getString("sex").charAt(0), myResultSet.getString("nascita"), myResultSet.getString("nazione"), myResultSet.getString("password"));
         } catch (Exception e){
             throw new IllegalArgumentException("codFiscale does not exist");
         }
@@ -70,6 +69,23 @@ public class UserDaoImpl implements UserDao{
     @Override
     public void deleteUser(User user) {
     
+    }
+
+    @Override
+    public void insertElettore(Elettore e) throws SQLException {
+        PreparedStatement prepStat = myConnection.prepareStatement("insert into Elettore values(?,?,?,?,?,?,?,?,?,?,?)");
+        prepStat.setString(1, e.getCodFisc().getCodFisc());
+        prepStat.setString(2, e.getName());
+        prepStat.setString(3, e.getSurname());
+        prepStat.setString(4, Character.toString(e.getSex()));
+        prepStat.setDate(5, Date.valueOf(e.getData()));
+        prepStat.setBoolean(6, e.hasVoted());
+        prepStat.setString(7, e.getPassword());
+        prepStat.setString(8, e.getEmail().getEmail());
+        prepStat.setString(9, e.getNascita());
+        prepStat.setString(10, e.getTelefono());
+        prepStat.setString(11, e.getNazione());
+        prepStat.executeUpdate();
     }
 
 

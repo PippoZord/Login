@@ -1,6 +1,5 @@
 package com.login.User;
-
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Elettore extends User {
 
@@ -8,7 +7,7 @@ public class Elettore extends User {
     private String telefono;
     private Email email;
     
-    public Elettore(String nome, String cognome, CodFisc codFisc, Date data, char sex, String password, String nascita, String nazione, Email email, String telefono, boolean hasVoted) {
+    public Elettore(String nome, String cognome, CodFisc codFisc, LocalDate data, char sex, String password, String nascita, String nazione, Email email, String telefono, boolean hasVoted) {
         super(nome, cognome, codFisc, data, sex, nascita, nazione, password);
         this.hasVoted = hasVoted;
         this.telefono = telefono;

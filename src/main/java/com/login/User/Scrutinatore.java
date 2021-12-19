@@ -1,10 +1,10 @@
 package com.login.User;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Scrutinatore extends User{
 
-    public Scrutinatore(String nome, String cognome, CodFisc codFisc, Date data, char sex, String nascita, String nazione, String password) {
+    public Scrutinatore(String nome, String cognome, CodFisc codFisc, LocalDate data, char sex, String nascita, String nazione, String password) {
         super(nome, cognome, codFisc, data, sex, nascita, nazione, password);
     }
     

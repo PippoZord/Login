@@ -1,5 +1,7 @@
 package com.login.User;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 public class CodFisc {
@@ -9,6 +11,12 @@ public class CodFisc {
     public CodFisc(String codFisc){
         Objects.requireNonNull(codFisc);
         this.codFisc = codFisc;
+    }
+
+    public static CodFisc createCodFisc(String nome, String Cognome, String nazione, String comune, Calendar data, String sex){
+        data.set(2000, 7, 11);;
+        System.out.println(data.getTime());
+        return null;
     }
 
     public String getCodFisc(){
