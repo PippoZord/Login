@@ -11,13 +11,13 @@ public abstract class User {
     private char sex;
 
     public User(String nome, String cognome, CodFisc codFisc, LocalDate data, char sex, String nascita, String nazione, String password){
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
         this.data = data;
         this.sex = sex;
-        this.cognome = cognome;
-        this.nazione = nazione;
+        this.cognome = cognome.toUpperCase();
+        this.nazione = nazione.toUpperCase();
         this.codiceFiscale = codFisc;
-        this.nascita = nascita;
+        this.nascita = nascita.toUpperCase();
         this.password = password;
     }
 

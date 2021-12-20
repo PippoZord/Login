@@ -94,14 +94,11 @@ public class RegistraElettoreController {
 
     @FXML
     void handleRegistra(ActionEvent event) throws SQLException, IOException {
-        Boolean bool = false;
         try{
             UserDao u = new UserDaoImpl();
             String HashPassword = Hashing.sha256().hashString(password.getText(), StandardCharsets.UTF_8).toString();
             CodFisc codFiscale = CodFisc.checkCodFisc(nome.getText(), cognome.getText(), nazione.getText(), comune.getText(), data.getValue(), Character.toString(sex), codFisc.getText());
-            u.insertElettore(new Elettore(nome.getText(), cognome.getText(), new CodFisc(codFisc.getText()),
-                    data.getValue(), sex, HashPassword, comune.getText(), nazione.getText(), new Email(email.getText()),
-                    cell.getText(), false));
+            u.insertElettore(new Elettore(nome.getText(), cognome.getText(), codFiscale, data.getValue(), sex, HashPassword, comune.getText(), nazione.getText(), new Email(email.getText()), cell.getText(), false));
             label.setText("REGISTRAZIONE AVVENUTA CON SUCCESSO");
         } catch (Exception e){
             label.setText("ERRORE DI REGISTRAZIONE. RICONTROLLA I PARAMETRI.");

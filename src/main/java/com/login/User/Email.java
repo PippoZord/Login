@@ -1,5 +1,6 @@
 package com.login.User;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Email {
@@ -15,6 +16,14 @@ public class Email {
         Objects.requireNonNull(email);
         if (!email.contains("@"))
             throw new IllegalArgumentException("IT IS NOT AN  EMAIL");
+        String s[] = email.split("@");
+        
+        if (s[0].length() < 1)
+            throw new IllegalArgumentException("minore prima");
+        s = s[1].split("\\.");
+        if (s[0].length()<1 || s[1].length()>3)
+            throw new IllegalArgumentException("minore dopo");
+        
     }
 
     public String getEmail(){
