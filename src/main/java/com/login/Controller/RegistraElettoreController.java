@@ -21,6 +21,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 
 public class RegistraElettoreController {
 
@@ -70,6 +71,9 @@ public class RegistraElettoreController {
 
     @FXML
     private Button registra;
+    
+    @FXML
+    private Label label;
 
     @FXML
     void handleBack(ActionEvent event) throws IOException {
@@ -90,14 +94,21 @@ public class RegistraElettoreController {
 
     @FXML
     void handleRegistra(ActionEvent event) throws SQLException {
-        UserDao u = new UserDaoImpl();
-        String HashPassword = Hashing.sha256().hashString(password.getText(), StandardCharsets.UTF_8).toString();
-        CodFisc codFiscale = CodFisc.checkCodFisc(nome.getText(), cognome.getText(), nazione.getText(), comune.getText(), data.getValue(), Character.toString(sex), codFisc.getText());
-        u.insertElettore(new Elettore(nome.getText(), cognome.getText(), new CodFisc(codFisc.getText()),
-                data.getValue(), sex, HashPassword, comune.getText(), nazione.getText(), new Email(email.getText()),
-                cell.getText(), false));
-        System.out.println(u);
-        
+        Boolean bool = false;
+        try{
+            System.out.println(sex);
+            UserDao u = new UserDaoImpl();
+            String HashPassword = Hashing.sha256().hashString(password.getText(), StandardCharsets.UTF_8).toString();
+            CodFisc codFiscale = CodFisc.checkCodFisc(nome.getText(), cognome.getText(), nazione.getText(), comune.getText(), data.getValue(), Character.toString(sex), codFisc.getText());
+            u.insertElettore(new Elettore(nome.getText(), cognome.getText(), new CodFisc(codFisc.getText()),
+                    data.getValue(), sex, HashPassword, comune.getText(), nazione.getText(), new Email(email.getText()),
+                    cell.getText(), false));
+        } catch (Exception e){
+            bool = true;
+            label.setText("ERRORE DI REGISTRAZIONE. RICONTROLLA I PARAMETRI.");
+        }
+        if (!bool)
+            label.setText("REGISTRAZIONE AVVENUTA CON SUCCESSO");
     }
 
     @FXML
@@ -109,12 +120,13 @@ public class RegistraElettoreController {
         assert data != null : "fx:id=\"data\" was not injected: check your FXML file 'RegistraElettore.fxml'.";
         assert email != null : "fx:id=\"email\" was not injected: check your FXML file 'RegistraElettore.fxml'.";
         assert femmina != null : "fx:id=\"femmina\" was not injected: check your FXML file 'RegistraElettore.fxml'.";
+        assert label != null : "fx:id=\"label\" was not injected: check your FXML file 'RegistraElettore.fxml'.";
         assert maschio != null : "fx:id=\"maschio\" was not injected: check your FXML file 'RegistraElettore.fxml'.";
         assert nazione != null : "fx:id=\"nazione\" was not injected: check your FXML file 'RegistraElettore.fxml'.";
         assert nome != null : "fx:id=\"nome\" was not injected: check your FXML file 'RegistraElettore.fxml'.";
         assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'RegistraElettore.fxml'.";
         assert registra != null : "fx:id=\"registra\" was not injected: check your FXML file 'RegistraElettore.fxml'.";
-
+        
     }
 
 }
