@@ -165,7 +165,6 @@ public class CodFisc {
                 return false;
             }   
         }
-        System.out.println(sex);
         switch (str.charAt(2)) {
             case 'A': {
                 if (data.getMonthValue() != 1)

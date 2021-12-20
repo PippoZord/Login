@@ -52,7 +52,7 @@ public class LoginScrutinatoreController {
         String HashPassword = Hashing.sha256().hashString(password.getText(), StandardCharsets.UTF_8).toString();
         try {
             UserDao u = new UserDaoImpl();
-            Scrutinatore s = u.getScrutinatore(new CodFisc(username.getText()));
+            Scrutinatore s = u.getScrutinatore(new CodFisc(username.getText().toUpperCase()));
             System.out.println(s);
             if (!s.getPassword().equals(HashPassword))
                 throw new IllegalArgumentException();

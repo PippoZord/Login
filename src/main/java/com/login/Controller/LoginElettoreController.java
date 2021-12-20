@@ -53,7 +53,7 @@ public class LoginElettoreController {
         String HashPassword  = Hashing.sha256().hashString(password.getText(), StandardCharsets.UTF_8).toString();
         try {
             UserDao u = new UserDaoImpl();
-            Elettore e = u.getElettore(new CodFisc(codFisc.getText()));
+            Elettore e = u.getElettore(new CodFisc(codFisc.getText().toUpperCase()));
             System.out.println(e);
             if (!e.getPassword().equals(HashPassword))
                 throw new IllegalArgumentException();
