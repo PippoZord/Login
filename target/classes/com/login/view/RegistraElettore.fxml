@@ -5,6 +5,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -42,19 +43,19 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="100.0" prefWidth="259.0" text="CODICE FISCALE">
+                              <Label alignment="CENTER" prefHeight="100.0" prefWidth="259.0" text="COGNOME">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="codFisc">
+                              <TextField fx:id="cognome">
                                  <HBox.margin>
                                     <Insets top="37.0" />
                                  </HBox.margin>
                               </TextField>
                            </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefHeight="100.0" prefWidth="437.0">
                            <children>
                               <Label alignment="CENTER" prefHeight="100.0" prefWidth="259.0" text="EMAIL">
                                  <font>
@@ -70,16 +71,16 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="100.0" prefWidth="259.0" text="NAZIONALITÀ">
+                              <Label alignment="CENTER" prefHeight="100.0" prefWidth="259.0" text="PASSWORD">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="nazione">
+                              <PasswordField fx:id="password">
                                  <HBox.margin>
                                     <Insets top="37.0" />
                                  </HBox.margin>
-                              </TextField>
+                              </PasswordField>
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -112,16 +113,16 @@
                         <Insets />
                      </HBox.margin>
                   </VBox>
-                  <VBox prefHeight="593.0" prefWidth="635.0">
+                  <VBox prefHeight="593.0" prefWidth="526.0">
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="100.0" prefWidth="259.0" text="COGNOME">
+                              <Label alignment="CENTER" prefHeight="100.0" prefWidth="259.0" text="CODICE FISCALE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="cognome">
+                              <TextField fx:id="codFisc">
                                  <HBox.margin>
                                     <Insets top="37.0" />
                                  </HBox.margin>
@@ -130,12 +131,12 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="100.0" prefWidth="259.0" text="PASSWORD">
+                              <Label alignment="CENTER" prefHeight="100.0" prefWidth="259.0" text="NAZIONALITÀ (es: ITA)">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="password">
+                              <TextField fx:id="nazione">
                                  <HBox.margin>
                                     <Insets top="37.0" />
                                  </HBox.margin>
@@ -144,7 +145,7 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="100.0" prefWidth="259.0" text="COMUNE DI NASCITA">
+                              <Label alignment="CENTER" prefHeight="100.0" prefWidth="259.0" text="COMUNE NASCITA (sigla)">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -172,7 +173,7 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="93.0" prefWidth="259.0" text="TELEFONO">
+                              <Label alignment="CENTER" prefHeight="102.0" prefWidth="259.0" text="TELEFONO">
                                  <font>
                                     <Font size="20.0" />
                                  </font>

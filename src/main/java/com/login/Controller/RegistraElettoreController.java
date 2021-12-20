@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class RegistraElettoreController {
@@ -65,7 +66,7 @@ public class RegistraElettoreController {
     private TextField nome;
 
     @FXML
-    private TextField password;
+    private PasswordField password;
 
     @FXML
     private Button registra;
@@ -91,9 +92,12 @@ public class RegistraElettoreController {
     void handleRegistra(ActionEvent event) throws SQLException {
         UserDao u = new UserDaoImpl();
         String HashPassword = Hashing.sha256().hashString(password.getText(), StandardCharsets.UTF_8).toString();
+        CodFisc codFiscale = CodFisc.checkCodFisc(nome.getText(), cognome.getText(), nazione.getText(), comune.getText(), data.getValue(), Character.toString(sex), codFisc.getText());
         u.insertElettore(new Elettore(nome.getText(), cognome.getText(), new CodFisc(codFisc.getText()),
                 data.getValue(), sex, HashPassword, comune.getText(), nazione.getText(), new Email(email.getText()),
                 cell.getText(), false));
+        System.out.println(u);
+        
     }
 
     @FXML
