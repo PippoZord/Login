@@ -16,10 +16,7 @@ public class App extends Application{
     private static Scene scene;
     
     public static void main( String[] args ) throws SQLException{
-        //CodFisc c = CodFisc.createCodFisc("Lorenzo", "Filipponi", "ITA", "MI", new Calendar.Builder().build(), "M");
         launch(args);
-//        User u = new Elettore("Lorenzo", "Filipponi", new CodFisc("FLPLNZ00M11F205W"), "123456", false);
-
     }
 
     @Override
@@ -42,9 +39,5 @@ public class App extends Application{
         FXMLLoader loader = new FXMLLoader(App.class.getResource("view/" + view + ".fxml"));
         Parent root = loader.load();
         return root;
-    }
-
-    public static void userInstance(User u){
-        
     }
 }
